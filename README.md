@@ -27,3 +27,4 @@ Find the Phonetics.class file then run:
 ```
 java (string list separated by space) < (input file .txt with a list of word separated by break-line)
 ```
+Check the word_dict.txt file on resource folder to check an example of input file.
