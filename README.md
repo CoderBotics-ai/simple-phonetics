@@ -25,7 +25,7 @@ mvn release:prepare
 ## Run
 Find the Phonetics.class file then run:
 ```
-java (string list separated by space) < (input file .txt with a list of word separated by break-line)
+java -cp (jar file project) (Main and its path) (string list separated by space) < (input file .txt with a list of word separated by break-line)
 ```
 Example
 ```
