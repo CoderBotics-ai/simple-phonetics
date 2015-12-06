@@ -51,6 +51,7 @@ public class Phonetics {
 			try (BufferedReader br = new BufferedReader(new FileReader(input))) {				
 			    String line;
 			    while ((line = br.readLine()) != null) {
+			    	//normalization removing non-alphabetic characters and specific rules characters after first letter.
 			    	if (PhoneticsSounds.containPhonetic(Helper.normalize(word),Helper.normalize(line))) {
 				    	if (response.toString().equals(""))
 				    		response.append(line);

@@ -11,19 +11,18 @@ public class PhoneticsSounds {
 	private enum SOUND4 { D, T; };
 	private enum SOUND5 { M, N; };
 	
+	//finds consecutive phonetics from comparable in the phonetic word
 	public static boolean containPhonetic(String word, String comparable) {
-		//System.out.println(word+" - "+comparable);
 		String w = findPhonetic(word);
-		//System.out.println(w+" - "+findPhonetic(comparable));
 		Set<String> c = findSetPhonetics(comparable);
 		for (String s : c) {
-			//System.out.println(s);
 			if(w.contains(s))
 				return true;
 		}
 		return false;
 	}
 	
+	//phonetic from word represented by string
 	private static String findPhonetic(String word) {
 		StringBuilder phonetic = new StringBuilder("");
 		for (int i = 0; i < word.length(); i++){
@@ -32,6 +31,7 @@ public class PhoneticsSounds {
 		return phonetic.toString();
 	}
 	
+	//list of consecutive phonetic found
 	private static Set<String> findSetPhonetics(String word) {
 		Set<String> phonetics = new HashSet<>();
 		StringBuilder phonetic = new StringBuilder("");
@@ -47,6 +47,7 @@ public class PhoneticsSounds {
 		return phonetics;
 	}
 
+	//map phonetic
 	private static int isPhonetic(char set) {
 		try {
 			SOUND1.valueOf(set+"");
