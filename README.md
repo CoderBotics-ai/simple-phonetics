@@ -23,7 +23,7 @@ mvn release:prepare
 ```
 
 ## Run
-Find the Phonetics.class file then run:
+Find the SearchPhonetics root folder then run:
 ```
 java -cp (jar file project) (Main and its path) (string list separated by space) < (input file .txt with a list of word separated by break-line)
 ```
