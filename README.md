@@ -4,7 +4,6 @@ Template for REST webservice with spring
 ## Tecnologies
 
 * Java 8
-* Spring Boot
 * Maven 3
 * Release plugin
 	* FindBugs plugin
