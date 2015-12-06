@@ -1,4 +1,4 @@
-package com.daitan.group.phonetics.util;
+package com.group.phonetics.util;
 
 public class Helper {
 	

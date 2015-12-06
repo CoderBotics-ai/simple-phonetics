@@ -1,4 +1,4 @@
-package com.daitan.group.phonetics.exception;
+package com.group.phonetics.exception;
 
 public class NoWordException extends Exception {
 

@@ -1,4 +1,4 @@
-package com.daitan.group.phonetics.enums;
+package com.group.phonetics.enums;
 
 import java.util.HashSet;
 import java.util.Set;
