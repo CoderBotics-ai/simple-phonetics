@@ -9,7 +9,7 @@ import com.group.phonetics.exception.NoDelimiterException;
 import com.group.phonetics.exception.NoInputException;
 import com.group.phonetics.exception.NoWordException;
 
-public class PhoneticsObject {
+public class Phonetics {
 
 	private String input;
 	private List<String> words;

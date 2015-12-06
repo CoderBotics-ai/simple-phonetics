@@ -6,14 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import com.group.phonetics.enums.PhoneticsSounds;
-import com.group.phonetics.pojo.PhoneticsObject;
+import com.group.phonetics.pojo.Phonetics;
 import com.group.phonetics.util.Helper;
 
-public class Phonetics {
+public class Main {
 
 	public static void main(String[] args) {
 
-		PhoneticsObject po = new PhoneticsObject();
+		Phonetics po = new Phonetics();
 		try {
 			po.setEnviroment(args);
 		} catch (Exception ex) {
@@ -21,7 +21,6 @@ public class Phonetics {
 		}
 
 		for (String word : po.getWords()) {
-			String out = word + ": ";
 			StringBuilder response = new StringBuilder();
 			try (BufferedReader br = new BufferedReader(new FileReader(po.getInput()))) {
 				String line;
@@ -37,10 +36,12 @@ public class Phonetics {
 				}
 			} catch (FileNotFoundException e) {
 				System.out.println("Error: File " + po.getInput() + " not found.");
+				System.exit(0);
 			} catch (IOException e) {
 				System.out.println("Error: File " + po.getInput() + " could not be opened. Check your permissions.");
+				System.exit(0);
 			}
-			System.out.println(out + response.toString());
+			System.out.println(word + ": " + response.toString());
 		}
 
 	}
