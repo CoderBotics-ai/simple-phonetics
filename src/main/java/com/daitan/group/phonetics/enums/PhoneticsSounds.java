@@ -1,5 +1,8 @@
 package com.daitan.group.phonetics.enums;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PhoneticsSounds {
 
 	private enum SOUND1 { A, E, I, O, U; };
@@ -10,43 +13,67 @@ public class PhoneticsSounds {
 	
 	public static boolean containPhonetic(String word, String comparable) {
 		//System.out.println(word+" - "+comparable);
-		int count = 0;
-		for (int i = 0; i < comparable.length(); i++){
-		    char c = comparable.charAt(i);       
-		    count = (isPhonetic(c)) ? count+1 : 0;
-		    if (count > 1)
-		    	return true;
+		String w = findPhonetic(word);
+		//System.out.println(w+" - "+findPhonetic(comparable));
+		Set<String> c = findSetPhonetics(comparable);
+		for (String s : c) {
+			//System.out.println(s);
+			if(w.contains(s))
+				return true;
 		}
 		return false;
 	}
+	
+	private static String findPhonetic(String word) {
+		StringBuilder phonetic = new StringBuilder("");
+		for (int i = 0; i < word.length(); i++){
+			phonetic.append(isPhonetic(word.charAt(i)));
+		}
+		return phonetic.toString();
+	}
+	
+	private static Set<String> findSetPhonetics(String word) {
+		Set<String> phonetics = new HashSet<>();
+		StringBuilder phonetic = new StringBuilder("");
+		for (int i = 0; i < word.length(); i++){			
+			phonetic.append(isPhonetic(word.charAt(i)));
+			if (phonetic.toString().equals("0"))
+				phonetic.setLength(0);
+			if (phonetic.toString().length() > 1) {
+				phonetics.add(phonetic.toString());
+				phonetic.setLength(0);
+			}
+		}
+		return phonetics;
+	}
 
-	private static boolean isPhonetic(char set) {
+	private static int isPhonetic(char set) {
 		try {
 			SOUND1.valueOf(set+"");
-			return true;
+			return 1;
 		}catch (IllegalArgumentException ex) { 
 		}
 		try {
 			SOUND2.valueOf(set+"");
-			return true;
+			return 2;
 		}catch (IllegalArgumentException ex) {  			
 		}
 		try {
 			SOUND3.valueOf(set+"");
-			return true;
+			return 3;
 		}catch (IllegalArgumentException ex) {  			
 		}
 		try {
 			SOUND4.valueOf(set+"");
-			return true;
+			return 4;
 		}catch (IllegalArgumentException ex) {  			
 		}
 		try {
 			SOUND5.valueOf(set+"");
-			return true;
+			return 5;
 		}catch (IllegalArgumentException ex) {  			
 		}
-		return false;
+		return 0;
 	}
 
 }

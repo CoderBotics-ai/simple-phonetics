@@ -12,11 +12,12 @@ import com.daitan.group.phonetics.enums.PhoneticsSounds;
 import com.daitan.group.phonetics.exception.MultipleInputsException;
 import com.daitan.group.phonetics.exception.NoDelimiterException;
 import com.daitan.group.phonetics.exception.NoInputException;
+import com.daitan.group.phonetics.exception.NoWordException;
 import com.daitan.group.phonetics.util.Helper;
 
 public class Phonetics {
 
-	public static void main(String[] args) throws NoDelimiterException, NoInputException, MultipleInputsException, FileNotFoundException, IOException {
+	public static void main(String[] args) throws NoDelimiterException, NoInputException, MultipleInputsException, FileNotFoundException, IOException, NoWordException {
 		
 		final String DELIMITER = "<";		
 		int i;
@@ -25,6 +26,10 @@ public class Phonetics {
 		for (i = 0; i<args.length && !args[i].equals(DELIMITER); ++i) {			
 			words.add(args[i]);	
         }
+		
+		if (words.size() == 0) {
+			throw new NoWordException();
+		}
 		
 		if (words.size() == args.length) {
 			throw new NoDelimiterException();
