@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,14 @@ public class Main {
 
 		List<Map<String, String>> normalized = new ArrayList<>();
 		BufferedReader br = null;
-		try {			
-			br = new BufferedReader(new FileReader(po.getInput()));
+		try {
+			// Read from stdin if input is "stdin", otherwise read from file
+			if ("stdin".equals(po.getInput())) {
+				br = new BufferedReader(new InputStreamReader(System.in));
+			} else {
+				br = new BufferedReader(new FileReader(po.getInput()));
+			}
+			
 			String line;
 			while ((line = br.readLine()) != null) {
 				Map<String, String> map = new HashMap<>();

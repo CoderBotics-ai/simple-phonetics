@@ -38,16 +38,38 @@ public class Phonetics {
 
 		this.words = new ArrayList<>();
 
+		// Check if args contains the delimiter
+		boolean hasDelimiter = false;
+		for (String arg : args) {
+			if (arg.equals(DELIMITER)) {
+				hasDelimiter = true;
+				break;
+			}
+		}
+		
+		// If no delimiter in args, assume all args are words and use stdin for input
+		if (!hasDelimiter) {
+			// Handle the case where the shell redirects stdin
+			if (args.length == 0) {
+				throw new NoWordException();
+			}
+			
+			for (i = 0; i < args.length; ++i) {
+				this.words.add(args[i]);
+			}
+			
+			// Use "stdin" as a special marker to read from standard input
+			this.input = "stdin";
+			return;
+		}
+		
+		// Regular processing when delimiter is present
 		for (i = 0; i < args.length && !args[i].equals(DELIMITER); ++i) {
 			this.words.add(args[i]);
 		}
 
 		if (this.words.size() == 0) {
 			throw new NoWordException();
-		}
-
-		if (this.words.size() == args.length) {
-			throw new NoDelimiterException();
 		}
 
 		if (args.length - 1 == i) {
