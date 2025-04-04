@@ -28,7 +28,7 @@ public class Main {
 
 		List<Map<String, String>> normalized = new ArrayList<>();
 		
-		// Using try-with-resources which is more idiomatic in Java 11
+		// Using try-with-resources which is more idiomatic in Java 11 and Java 17
 		// This automatically handles closing the resource even if an exception occurs
 		try (BufferedReader br = "stdin".equals(po.getInput()) 
 				? new BufferedReader(new InputStreamReader(System.in))

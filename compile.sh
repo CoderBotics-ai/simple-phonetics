@@ -1,9 +1,11 @@
 #!/bin/bash
-# Updated compile script for Java 11
-# The core functionality remains the same, but we're now targeting Java 11
+# Updated compile script for Java 17
+# The core functionality remains the same, but we're now targeting Java 17
+# Changed from Java 11 to Java 17 in the comments
 
 find -name "*.java" > sources.txt
 # Using javac without explicit version flags - will use the system's default Java version
-# which should be set to Java 11 for this project
+# which should be set to Java 17 for this project
+# No changes needed to the javac command as it uses the system's default Java version
 javac @sources.txt
 rm -rf sources.txt

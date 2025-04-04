@@ -11,3 +11,4 @@ public class NoWordException extends Exception {
 		super("Error: No word found.");
 	}
 }
+// No changes needed as this exception class is fully compatible with Java 17

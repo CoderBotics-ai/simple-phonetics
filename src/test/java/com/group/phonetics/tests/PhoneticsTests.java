@@ -33,6 +33,7 @@ public class PhoneticsTests {
 	public void noWordTest(){
 		
 		// Using Path API which is more robust in Java 11
+		// This API is fully compatible with Java 17 as well
 		String args[] = new String[]{"<","C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
 		
 		Phonetics po = new Phonetics();
@@ -90,6 +91,7 @@ public class PhoneticsTests {
 	public void inputFileNotFoundTest(){
 		
 		// In Java 11, we could use try-with-resources which auto-closes resources
+		// Java 17 continues to support try-with-resources with no changes needed
 		// But keeping similar structure to maintain compatibility
 		BufferedReader br = null;
 		try {			
@@ -108,6 +110,7 @@ public class PhoneticsTests {
 		}
 		
 		// Alternative Java 11 approach (commented out to maintain original functionality)
+		// This would also work in Java 17 with no changes
 		/*
 		Path path = Paths.get("C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.tx");
 		try {
