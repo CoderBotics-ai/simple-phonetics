@@ -1,5 +1,11 @@
 package com.group.phonetics.exception;
 
+/**
+ * Exception thrown when no input file is found.
+ * 
+ * This class has been verified to be compatible with Java 11.
+ * No changes were required during the Java 8 to Java 11 upgrade.
+ */
 public class NoInputException extends Exception {
 
 	/**

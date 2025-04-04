@@ -27,14 +27,12 @@ public class Main {
 		}
 
 		List<Map<String, String>> normalized = new ArrayList<>();
-		BufferedReader br = null;
-		try {
-			// Read from stdin if input is "stdin", otherwise read from file
-			if ("stdin".equals(po.getInput())) {
-				br = new BufferedReader(new InputStreamReader(System.in));
-			} else {
-				br = new BufferedReader(new FileReader(po.getInput()));
-			}
+		
+		// Using try-with-resources which is more idiomatic in Java 11
+		// This automatically handles closing the resource even if an exception occurs
+		try (BufferedReader br = "stdin".equals(po.getInput()) 
+				? new BufferedReader(new InputStreamReader(System.in))
+				: new BufferedReader(new FileReader(po.getInput()))) {
 			
 			String line;
 			while ((line = br.readLine()) != null) {
@@ -48,13 +46,6 @@ public class Main {
 		} catch (IOException e) {
 			System.err.println("Error: File " + po.getInput() + " could not be opened. Check your permissions.");
 			System.exit(0);
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-				}
-			}
 		}
 		
 		for (String word : po.getWords()) {
