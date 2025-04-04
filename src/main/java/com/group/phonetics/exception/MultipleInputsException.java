@@ -3,8 +3,8 @@ package com.group.phonetics.exception;
 /**
  * Exception thrown when multiple inputs are detected.
  * 
- * This class has been verified for Java 17 compatibility.
- * No changes were required as the implementation is compatible with both Java 11 and Java 17.
+ * This class has been verified for Java 21 compatibility.
+ * No changes were required as the implementation is compatible with both Java 17 and Java 21.
  */
 public class MultipleInputsException extends Exception {
 

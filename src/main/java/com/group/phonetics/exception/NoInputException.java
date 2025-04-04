@@ -8,6 +8,9 @@ package com.group.phonetics.exception;
  * 
  * This class has been verified to be compatible with Java 17.
  * No changes were required during the Java 11 to Java 17 upgrade.
+ * 
+ * This class has been verified to be compatible with Java 21.
+ * No changes were required during the Java 17 to Java 21 upgrade.
  */
 public class NoInputException extends Exception {
 

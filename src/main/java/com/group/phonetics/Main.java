@@ -28,7 +28,7 @@ public class Main {
 
 		List<Map<String, String>> normalized = new ArrayList<>();
 		
-		// Using try-with-resources which is more idiomatic in Java 11 and Java 17
+		// Using try-with-resources which is more idiomatic in Java 11, Java 17, and Java 21
 		// This automatically handles closing the resource even if an exception occurs
 		try (BufferedReader br = "stdin".equals(po.getInput()) 
 				? new BufferedReader(new InputStreamReader(System.in))
@@ -48,6 +48,8 @@ public class Main {
 			System.exit(0);
 		}
 		
+		// Note: In Java 21, we could use pattern matching for instanceof or record patterns
+		// if we wanted to refactor this code, but keeping original logic as requested
 		for (String word : po.getWords()) {
 			StringBuilder response = new StringBuilder();
 			for (Map<String, String> map : normalized) {

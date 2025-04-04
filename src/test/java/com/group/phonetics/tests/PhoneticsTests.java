@@ -34,6 +34,7 @@ public class PhoneticsTests {
 		
 		// Using Path API which is more robust in Java 11
 		// This API is fully compatible with Java 17 as well
+		// And continues to be compatible with Java 21
 		String args[] = new String[]{"<","C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
 		
 		Phonetics po = new Phonetics();
@@ -92,7 +93,7 @@ public class PhoneticsTests {
 		
 		// In Java 11, we could use try-with-resources which auto-closes resources
 		// Java 17 continues to support try-with-resources with no changes needed
-		// But keeping similar structure to maintain compatibility
+		// Java 21 maintains this compatibility with no changes required
 		BufferedReader br = null;
 		try {			
 			br = new BufferedReader(new FileReader("C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.tx"));
@@ -109,9 +110,10 @@ public class PhoneticsTests {
 			}
 		}
 		
-		// Alternative Java 11 approach (commented out to maintain original functionality)
-		// This would also work in Java 17 with no changes
+		// Alternative approach using newer Java features
+		// This would work in Java 17 and Java 21 with no changes
 		/*
+		// Java 21 supports enhanced try-with-resources and improved Files API
 		Path path = Paths.get("C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.tx");
 		try {
 			String content = Files.readString(path);

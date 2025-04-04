@@ -4,11 +4,17 @@
   <artifactId>SearchPhonetics</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
+  <!-- Added properties section to define Java version -->
+  <properties>
+    <java.version>21</java.version>
+  </properties>
+  
   <dependencies>
     	<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
+			<!-- Updated JUnit version to ensure compatibility with Java 21 -->
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -25,11 +31,11 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- Updated maven-compiler-plugin version to be compatible with Java 17 -->
-        <version>3.10.1</version>
+        <!-- Updated maven-compiler-plugin version to be compatible with Java 21 -->
+        <version>3.11.0</version>
         <configuration>
-          <!-- Updated release flag from 11 to 17 for Java 17 compatibility -->
-          <release>17</release>
+          <!-- Updated release flag from 17 to 21 for Java 21 compatibility -->
+          <release>21</release>
         </configuration>
       </plugin>
     </plugins>
