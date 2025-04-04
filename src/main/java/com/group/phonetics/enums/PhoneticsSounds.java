@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class PhoneticsSounds {
 
-	// No changes needed for enums as they are compatible with Java 11
+	// No changes needed for enums as they are compatible with Java 17
 	private enum SOUND1 {
 		A, E, I, O, U;
 	};
