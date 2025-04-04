@@ -1,5 +1,11 @@
 package com.group.phonetics.exception;
 
+/**
+ * Exception thrown when no delimiter is found in the input.
+ * 
+ * This class has been verified to be compatible with Java 11.
+ * No changes were required during the Java 8 to Java 11 migration.
+ */
 public class NoDelimiterException extends Exception {
 
 	/**

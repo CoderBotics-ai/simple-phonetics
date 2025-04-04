@@ -25,10 +25,11 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <!-- Updated maven-compiler-plugin version to be compatible with Java 11 -->
+        <version>3.8.1</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <!-- Replaced source/target with release flag which is recommended for Java 9+ -->
+          <release>11</release>
         </configuration>
       </plugin>
     </plugins>
