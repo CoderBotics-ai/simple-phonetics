@@ -3,7 +3,7 @@ Template for REST webservice with spring
 
 ## Tecnologies
 
-* Java 11 <!-- Updated from Java 8 to Java 11 -->
+* Java 21 <!-- Updated from Java 11 to Java 21 -->
 * Maven 3
 * Release plugin
 	* FindBugs plugin

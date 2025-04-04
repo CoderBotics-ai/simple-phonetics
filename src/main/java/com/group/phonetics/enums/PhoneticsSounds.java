@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class PhoneticsSounds {
 
-	// No changes needed for enums as they are compatible with Java 17
+	// No changes needed for enums as they are compatible with Java 21
 	private enum SOUND1 {
 		A, E, I, O, U;
 	};
@@ -63,6 +63,8 @@ public class PhoneticsSounds {
 	}
 
 	// map phonetic
+	// Note: This method could be optimized in Java 21 using pattern matching for switch expressions,
+	// but keeping original implementation to maintain exact behavior
 	private static int isPhonetic(char set) {
 		try {
 			SOUND1.valueOf(set + "");

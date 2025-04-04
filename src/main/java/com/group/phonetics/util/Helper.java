@@ -2,9 +2,10 @@ package com.group.phonetics.util;
 
 public class Helper {
 	
-	// No changes needed for Java 11 compatibility
-	// The enum declaration is already compatible with Java 17
-	// Note: Java 17 has enhanced switch expressions and pattern matching, but they're not needed here
+	// No changes needed for Java 21 compatibility
+	// The enum declaration is already compatible with Java 21
+	// Java 21 features like enhanced pattern matching in switch and record patterns
+	// are not needed for this simple utility class
 	private enum Discard {A, E, I, H, O, U, W, Y;};
 	
 	public static String normalize (String word) {		

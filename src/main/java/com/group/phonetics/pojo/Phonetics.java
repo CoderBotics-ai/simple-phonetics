@@ -30,9 +30,9 @@ public class Phonetics {
 		this.words = words;
 	}
 
-	// This method remains unchanged as it's compatible with Java 17
-	// Java 17 supports all valid Java 11 syntax and this code doesn't use any APIs 
-	// that were deprecated or removed in Java 17
+	// This method remains unchanged as it's compatible with Java 21
+	// Java 21 supports all valid Java 17 syntax and this code doesn't use any APIs 
+	// that were deprecated or removed in Java 21
 	public void setEnviroment(String[] args)
 			throws NoWordException, NoDelimiterException, NoInputException, MultipleInputsException {
 
