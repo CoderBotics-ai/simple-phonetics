@@ -3,7 +3,14 @@
   <groupId>SearchPhonetics</groupId>
   <artifactId>SearchPhonetics</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
+
+  <properties>
+    <!-- Define Java version property for consistency -->
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <dependencies>
     	<dependency>
 			<groupId>junit</groupId>
@@ -12,7 +19,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-  
+
   <build>
     <resources>
       <resource>
@@ -24,12 +31,22 @@
     </resources>
     <plugins>
       <plugin>
+        <!-- Updated Maven Compiler Plugin configuration for Java 11 -->
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
+        <!-- Updated plugin version for better Java 11 support -->
+        <version>3.8.1</version>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <!-- Set source and target compatibility to Java 11 -->
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
+      </plugin>
+      <plugin>
+        <!-- Added Surefire plugin configuration for Java 11 test execution -->
+        <!-- This version is known to be compatible with Java 11 and JUnit 4/5 -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
       </plugin>
     </plugins>
   </build>

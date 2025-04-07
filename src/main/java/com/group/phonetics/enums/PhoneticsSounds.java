@@ -27,9 +27,12 @@ public class PhoneticsSounds {
 
 	// finds consecutive phonetics from comparable in the phonetic word
 	public static boolean containPhonetic(String word, String comparable) {
-		String w = findPhonetic(word);
-		Set<String> c = findSetPhonetics(comparable);
-		for (String s : c) {
+		// Use var for local variable type inference (Java 10+)
+		var w = findPhonetic(word);
+		// Use var for local variable type inference (Java 10+)
+		var c = findSetPhonetics(comparable);
+		// Use var for loop variable type inference (Java 10+)
+		for (var s : c) {
 			if (w.contains(s))
 				return true;
 		}
@@ -38,7 +41,8 @@ public class PhoneticsSounds {
 
 	// phonetic from word represented by string
 	private static String findPhonetic(String word) {
-		StringBuilder phonetic = new StringBuilder("");
+		// Use var for local variable type inference (Java 10+)
+		var phonetic = new StringBuilder("");
 		for (int i = 0; i < word.length(); i++) {
 			phonetic.append(isPhonetic(word.charAt(i)));
 		}
@@ -47,8 +51,11 @@ public class PhoneticsSounds {
 
 	// list of consecutive phonetic found
 	private static Set<String> findSetPhonetics(String word) {
-		Set<String> phonetics = new HashSet<>();
-		StringBuilder phonetic = new StringBuilder("");
+		// Use var for local variable type inference (Java 10+)
+		// Explicit type argument needed for HashSet constructor when using var
+		var phonetics = new HashSet<String>();
+		// Use var for local variable type inference (Java 10+)
+		var phonetic = new StringBuilder("");
 		for (int i = 0; i < word.length(); i++) {
 			phonetic.append(isPhonetic(word.charAt(i)));
 			if (phonetic.toString().equals("0"))
@@ -63,6 +70,7 @@ public class PhoneticsSounds {
 
 	// map phonetic
 	private static int isPhonetic(char set) {
+		// No changes needed here, logic remains compatible with Java 11
 		try {
 			SOUND1.valueOf(set + "");
 			return 1;
