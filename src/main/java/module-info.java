@@ -6,6 +6,13 @@
  * Adopting the Java Platform Module System (JPMS) enhances encapsulation and reliability.
  */
 module simple.phonetics {
+    // Explicitly require java.base for clarity, although often implicit.
+    // Confirmed during Java 17 upgrade review.
+    requires java.base;
+    // Require java.logging as the library may use the Java Logging API.
+    // Added during Java 17 upgrade review to ensure module compatibility.
+    requires java.logging;
+
     // Exports the core phonetics functionality package, including main encoder classes.
     exports com.group.phonetics;
 

@@ -5,20 +5,28 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <!-- Define Java version property for consistency -->
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <!-- Define Java version property for consistency - Upgraded to Java 17 -->
+    <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Define JUnit Jupiter version property -->
+    <junit.jupiter.version>5.9.2</junit.jupiter.version>
   </properties>
 
   <dependencies>
-    	<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <!-- Upgraded JUnit from version 4 to 5 (Jupiter) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
   <build>
     <resources>
@@ -31,22 +39,22 @@
     </resources>
     <plugins>
       <plugin>
-        <!-- Updated Maven Compiler Plugin configuration for Java 11 -->
+        <!-- Updated Maven Compiler Plugin configuration for Java 17 -->
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- Updated plugin version for better Java 11 support -->
-        <version>3.8.1</version>
+        <!-- Updated plugin version for better Java 17 support -->
+        <version>3.11.0</version>
         <configuration>
-          <!-- Set source and target compatibility to Java 11 -->
-          <source>${maven.compiler.source}</source>
-          <target>${maven.compiler.target}</target>
+          <!-- Set source and target compatibility to Java 17 using property -->
+          <source>${java.version}</source>
+          <target>${java.version}</target>
         </configuration>
       </plugin>
       <plugin>
-        <!-- Added Surefire plugin configuration for Java 11 test execution -->
-        <!-- This version is known to be compatible with Java 11 and JUnit 4/5 -->
+        <!-- Updated Surefire plugin configuration for Java 17 test execution and JUnit 5 support -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.2</version>
+        <!-- Updated plugin version for better Java 17 and JUnit 5 compatibility -->
+        <version>3.1.2</version>
       </plugin>
     </plugins>
   </build>
