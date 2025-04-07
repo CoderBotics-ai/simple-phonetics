@@ -5,10 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <!-- Define Java version property for consistency - Upgraded to Java 17 -->
-    <java.version>17</java.version>
+    <!-- Define Java version property for consistency - Upgraded to Java 21 -->
+    <java.version>21</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- Define JUnit Jupiter version property -->
+    <!-- Define JUnit Jupiter version property - Verified 5.9.2 is compatible -->
     <junit.jupiter.version>5.9.2</junit.jupiter.version>
   </properties>
 
@@ -39,21 +39,20 @@
     </resources>
     <plugins>
       <plugin>
-        <!-- Updated Maven Compiler Plugin configuration for Java 17 -->
+        <!-- Updated Maven Compiler Plugin configuration for Java 21 -->
         <artifactId>maven-compiler-plugin</artifactId>
-        <!-- Updated plugin version for better Java 17 support -->
+        <!-- Version 3.11.0 supports Java 21 -->
         <version>3.11.0</version>
         <configuration>
-          <!-- Set source and target compatibility to Java 17 using property -->
-          <source>${java.version}</source>
-          <target>${java.version}</target>
+          <!-- Set target release level to Java 21 using the release tag (preferred over source/target) -->
+          <release>${java.version}</release>
         </configuration>
       </plugin>
       <plugin>
-        <!-- Updated Surefire plugin configuration for Java 17 test execution and JUnit 5 support -->
+        <!-- Updated Surefire plugin configuration for Java 21 test execution and JUnit 5 support -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <!-- Updated plugin version for better Java 17 and JUnit 5 compatibility -->
+        <!-- Version 3.1.2 supports Java 21 and JUnit 5 -->
         <version>3.1.2</version>
       </plugin>
     </plugins>

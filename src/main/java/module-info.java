@@ -27,4 +27,15 @@ module simple.phonetics {
 
     // Exports the package containing utility classes relevant to the library's users.
     exports com.group.phonetics.util;
+
+    // Opens the core package to JUnit Platform Commons for reflective access during testing.
+    // Added during Java 21 upgrade review to ensure test frameworks can access necessary internals,
+    // aligning with stricter module encapsulation checks if reflection is used in tests.
+    // Adjust or add more 'opens' directives if other packages or frameworks require reflective access.
+    opens com.group.phonetics to junit.platform.commons;
+    // Example: If POJOs also need reflective access by test frameworks:
+    // opens com.group.phonetics.pojo to junit.platform.commons;
+    // Example: If utilities need reflective access by test frameworks:
+    // opens com.group.phonetics.util to junit.platform.commons;
+
 }

@@ -13,12 +13,14 @@ import com.group.phonetics.pojo.Phonetics;
 /**
  * Test class for Phonetics functionality.
  * Note: Tests are currently ignored. Review and potentially enable/update them
- * as part of testing the application on Java 11. The core Java APIs used
- * (File I/O, String, Exception Handling) are compatible between Java 8 and 11.
+ * as part of testing the application on Java 21. The core Java APIs used
+ * (File I/O, String, Exception Handling) and JUnit 5 annotations are compatible
+ * between Java 17 and 21.
  */
 public class PhoneticsTests {
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void emptyTest(){
 
@@ -32,7 +34,8 @@ public class PhoneticsTests {
 		}
 	}
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void noWordTest(){
 
@@ -46,7 +49,8 @@ public class PhoneticsTests {
 		}
 	}
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void noDelimiterTest(){
 
@@ -60,7 +64,8 @@ public class PhoneticsTests {
 		}
 	}
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void noInputFileTest(){
 
@@ -74,7 +79,8 @@ public class PhoneticsTests {
 		}
 	}
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void MultipleInputFileTest(){
 
@@ -88,17 +94,20 @@ public class PhoneticsTests {
 		}
 	}
 
-	@Disabled // Test remains ignored as per original code. No Java 11 specific changes needed within the test.
+	// No changes needed for Java 21. JUnit 5 and core Java APIs are compatible.
+	@Disabled // Test remains ignored as per original code.
 	@Test
 	public void inputFileNotFoundTest(){
 
 		// The file I/O operations (FileReader, BufferedReader) and exception handling
-		// used here are fully compatible with Java 11. No changes are required.
+		// used here are fully compatible with Java 21. No changes are required.
 		// The try-finally block for resource management, while replaceable with
 		// try-with-resources (available since Java 7), is left unchanged to adhere
-		// to the minimal change requirement.
+		// to the minimal change requirement and preserve existing logic.
 		BufferedReader br = null;
 		try {
+			// Using an absolute path specific to a user environment; this test might fail
+			// in different environments if enabled. Path remains unchanged.
 			br = new BufferedReader(new FileReader("C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.tx"));
 			// Added @Test annotation which was missing, although the test remains ignored.
 		} catch (FileNotFoundException e) {
