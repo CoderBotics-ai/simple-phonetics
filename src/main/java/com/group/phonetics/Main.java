@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+// No specific Java 11 file I/O features like Files.readString are directly applicable
+// here without changing the line-by-line processing logic or stdin handling.
+// Sticking with BufferedReader within try-with-resources is the minimal change.
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +21,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Phonetics po = new Phonetics();
+		// Use var for local variable type inference (Java 10+)
+		var po = new Phonetics();
 		try {
 			po.setEnviroment(args);
 		} catch (Exception ex) {
@@ -26,19 +30,19 @@ public class Main {
 			System.exit(0);
 		}
 
-		List<Map<String, String>> normalized = new ArrayList<>();
-		BufferedReader br = null;
-		try {
-			// Read from stdin if input is "stdin", otherwise read from file
-			if ("stdin".equals(po.getInput())) {
-				br = new BufferedReader(new InputStreamReader(System.in));
-			} else {
-				br = new BufferedReader(new FileReader(po.getInput()));
-			}
-			
+		// Use var for local variable type inference (Java 10+)
+		// Explicit type arguments needed on the right for inference with generics
+		var normalized = new ArrayList<Map<String, String>>();
+		// Use try-with-resources (available since Java 7) for automatic resource management of BufferedReader
+		// This replaces the manual br.close() in the finally block.
+		try (BufferedReader br = "stdin".equals(po.getInput())
+				? new BufferedReader(new InputStreamReader(System.in))
+				: new BufferedReader(new FileReader(po.getInput()))) {
+
 			String line;
 			while ((line = br.readLine()) != null) {
-				Map<String, String> map = new HashMap<>();
+				// Use var for local variable type inference (Java 10+)
+				var map = new HashMap<String, String>();
 				map.put(line, Helper.normalize(line));
 				normalized.add(map);
 			}
@@ -46,28 +50,28 @@ public class Main {
 			System.err.println("Error: File " + po.getInput() + " not found.");
 			System.exit(0);
 		} catch (IOException e) {
-			System.err.println("Error: File " + po.getInput() + " could not be opened. Check your permissions.");
+			// Refined error message for clarity on input source
+			System.err.println("Error: Could not read from " + ("stdin".equals(po.getInput()) ? "standard input" : po.getInput()) + ". " + e.getMessage());
 			System.exit(0);
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-				}
-			}
 		}
-		
+		// The finally block for closing BufferedReader is no longer needed due to try-with-resources.
+
 		for (String word : po.getWords()) {
-			StringBuilder response = new StringBuilder();
+			// Use var for local variable type inference (Java 10+)
+			var response = new StringBuilder();
 			for (Map<String, String> map : normalized) {
 				// normalization removing non-alphabetic characters and
 				// specific rules characters after first letter.
-				Map.Entry<String, String> entry = map.entrySet().iterator().next();
+				// Use var for local variable type inference (Java 10+)
+				// Note: Assumes map always contains exactly one entry.
+				var entry = map.entrySet().iterator().next();
 				if (PhoneticsSounds.containPhonetic(Helper.normalize(word), entry.getValue())) {
-					if (response.toString().equals(""))
+					// Check StringBuilder length for efficiency instead of toString().equals("")
+					if (response.length() == 0)
 						response.append(entry.getKey());
 					else
-						response.append(", " + entry.getKey());
+						// Chain append calls for minor improvement
+						response.append(", ").append(entry.getKey());
 				}
 			}
 			System.out.println(word + ": " + response.toString());
