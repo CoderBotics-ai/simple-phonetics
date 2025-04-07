@@ -22,6 +22,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		// Use var for local variable type inference (Java 10+)
+		// No changes needed for Java 17 compatibility.
 		var po = new Phonetics();
 		try {
 			po.setEnviroment(args);
@@ -31,10 +32,12 @@ public class Main {
 		}
 
 		// Use var for local variable type inference (Java 10+)
-		// Explicit type arguments needed on the right for inference with generics
+		// Explicit type arguments needed on the right for inference with generics.
+		// This usage is correct and clear, no changes needed for Java 17.
 		var normalized = new ArrayList<Map<String, String>>();
 		// Use try-with-resources (available since Java 7) for automatic resource management of BufferedReader
 		// This replaces the manual br.close() in the finally block.
+		// No changes needed for Java 17 compatibility.
 		try (BufferedReader br = "stdin".equals(po.getInput())
 				? new BufferedReader(new InputStreamReader(System.in))
 				: new BufferedReader(new FileReader(po.getInput()))) {
@@ -42,6 +45,8 @@ public class Main {
 			String line;
 			while ((line = br.readLine()) != null) {
 				// Use var for local variable type inference (Java 10+)
+				// Explicit type arguments ensure correct type inference.
+				// No changes needed for Java 17.
 				var map = new HashMap<String, String>();
 				map.put(line, Helper.normalize(line));
 				normalized.add(map);
@@ -58,20 +63,25 @@ public class Main {
 
 		for (String word : po.getWords()) {
 			// Use var for local variable type inference (Java 10+)
+			// No changes needed for Java 17.
 			var response = new StringBuilder();
 			for (Map<String, String> map : normalized) {
 				// normalization removing non-alphabetic characters and
 				// specific rules characters after first letter.
 				// Use var for local variable type inference (Java 10+)
+				// Type inference for Map.Entry<String, String> is clear.
+				// No changes needed for Java 17.
 				// Note: Assumes map always contains exactly one entry.
-				var entry = map.entrySet().iterator().next();
-				if (PhoneticsSounds.containPhonetic(Helper.normalize(word), entry.getValue())) {
-					// Check StringBuilder length for efficiency instead of toString().equals("")
-					if (response.length() == 0)
-						response.append(entry.getKey());
-					else
-						// Chain append calls for minor improvement
-						response.append(", ").append(entry.getKey());
+				if (!map.isEmpty()) {
+					var entry = map.entrySet().iterator().next();
+					if (PhoneticsSounds.containPhonetic(Helper.normalize(word), entry.getValue())) {
+						// Check StringBuilder length for efficiency instead of toString().equals("")
+						if (response.length() == 0)
+							response.append(entry.getKey());
+						else
+							// Chain append calls for minor improvement
+							response.append(", ").append(entry.getKey());
+					}
 				}
 			}
 			System.out.println(word + ": " + response.toString());

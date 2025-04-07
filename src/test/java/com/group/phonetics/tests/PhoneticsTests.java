@@ -28,7 +28,6 @@ public class PhoneticsTests {
 		try {
 			po.setEnviroment(args);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -43,7 +42,6 @@ public class PhoneticsTests {
 		try {
 			po.setEnviroment(args);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -58,7 +56,6 @@ public class PhoneticsTests {
 		try {
 			po.setEnviroment(args);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -73,7 +70,6 @@ public class PhoneticsTests {
 		try {
 			po.setEnviroment(args);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -88,7 +84,6 @@ public class PhoneticsTests {
 		try {
 			po.setEnviroment(args);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
