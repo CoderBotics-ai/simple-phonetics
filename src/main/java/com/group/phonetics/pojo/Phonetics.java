@@ -104,8 +104,7 @@ public class Phonetics {
 		}
 
 		// Check if more than one argument follows the delimiter
-		// No change needed for Java 17: Arrays.copyOfRange is compatible.
-		if (Arrays.copyOfRange(args, i + 1, args.length).length > 1) {
+		if (i + 1 < args.length && Arrays.copyOfRange(args, i + 1, args.length).length > 1) {
 			throw new MultipleInputsException();
 		}
 

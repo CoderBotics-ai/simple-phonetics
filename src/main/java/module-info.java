@@ -4,13 +4,15 @@
  * enabling modular applications to utilize its phonetic encoding capabilities.
  *
  * Adopting the Java Platform Module System (JPMS) enhances encapsulation and reliability.
+ * Reviewed for Java 21 compatibility: No changes required as module declarations
+ * remain valid and necessary dependencies (java.base, java.logging) are already declared.
  */
 module simple.phonetics {
     // Explicitly require java.base for clarity, although often implicit.
-    // Confirmed during Java 17 upgrade review.
+    // Confirmed during Java 17 upgrade review. Remains valid for Java 21.
     requires java.base;
     // Require java.logging as the library may use the Java Logging API.
-    // Added during Java 17 upgrade review to ensure module compatibility.
+    // Added during Java 17 upgrade review to ensure module compatibility. Remains necessary for Java 21.
     requires java.logging;
 
     // Exports the core phonetics functionality package, including main encoder classes.
