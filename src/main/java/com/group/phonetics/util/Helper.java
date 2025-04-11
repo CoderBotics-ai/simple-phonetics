@@ -4,6 +4,7 @@ package com.group.phonetics.util;
 // Optional 'var' keyword usage is introduced for local variables as per Java 10+.
 // No changes needed for Java 17 upgrade based on the provided instructions,
 // as 'var' usage here does not involve generics requiring explicit type arguments.
+// Java 21 Upgrade: Replaced new StringBuilder("") with new StringBuilder() for best practice.
 public class Helper {
 
 	private enum Discard {A, E, I, H, O, U, W, Y;};
@@ -11,7 +12,8 @@ public class Helper {
 	public static String normalize (String word) {
 		word = word.toUpperCase();
 		// Use 'var' for local variable type inference (Java 10+) - No generics involved.
-		var newWord = new StringBuilder("");
+		// Java 21 Upgrade: Use preferred constructor for empty StringBuilder.
+		var newWord = new StringBuilder();
 		word = onlyAlphabetic(word);
 		// Handle empty string after onlyAlphabetic
 		if (word.isEmpty()) {
@@ -24,7 +26,7 @@ public class Helper {
 			try {
 				// Check if the character should be discarded
 				Discard.valueOf(String.valueOf(c)); // Use String.valueOf for clarity
-			} catch (IllegalArgumentException ex) { // Existing exception handling is valid in Java 17.
+			} catch (IllegalArgumentException ex) { // Existing exception handling is valid in Java 17 & 21.
 				// If valueOf throws an exception, the character is not in Discard enum
 				newWord.append(c);
 			}
@@ -37,12 +39,13 @@ public class Helper {
 	 * Note: Java 11's String.strip() removes leading/trailing whitespace,
 	 * which is different from this method's goal of removing *all* non-alphabetic characters.
 	 * Therefore, strip() is not applicable here.
-	 * This logic remains valid and necessary in Java 17.
+	 * This logic remains valid and necessary in Java 17 & 21.
 	 * @param word The input string.
 	 * @return The string containing only alphabetic characters.
 	 */
 	public static String onlyAlphabetic (String word) {
 		// Keep existing logic as strip() is not equivalent and replaceAll is standard.
+		// No changes needed for Java 21 compatibility.
 		return word.replaceAll("[^a-zA-Z]", "");
 	}
 
