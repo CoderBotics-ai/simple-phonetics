@@ -15,7 +15,8 @@ public class PhoneticsTests {
 	@Ignore
 	public void emptyTest(){
 		
-		String args[] = new String[]{};
+		// Java 11 supports var for local variables, but we'll keep the explicit type for clarity
+		String[] args = new String[]{};
 		
 		Phonetics po = new Phonetics();
 		try {
@@ -29,7 +30,7 @@ public class PhoneticsTests {
 	@Ignore
 	public void noWordTest(){
 		
-		String args[] = new String[]{"<","C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
+		String[] args = new String[]{"<","C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
 		
 		Phonetics po = new Phonetics();
 		try {
@@ -43,7 +44,7 @@ public class PhoneticsTests {
 	@Ignore
 	public void noDelimiterTest(){
 		
-		String args[] = new String[]{"1ton#", "brief", "soon", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
+		String[] args = new String[]{"1ton#", "brief", "soon", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
 		
 		Phonetics po = new Phonetics();
 		try {
@@ -57,7 +58,7 @@ public class PhoneticsTests {
 	@Ignore
 	public void noInputFileTest(){
 		
-		String args[] = new String[]{"1ton#", "brief", "soon", "<"};
+		String[] args = new String[]{"1ton#", "brief", "soon", "<"};
 		
 		Phonetics po = new Phonetics();
 		try {
@@ -71,7 +72,7 @@ public class PhoneticsTests {
 	@Ignore
 	public void MultipleInputFileTest(){
 		
-		String args[] = new String[]{"1ton#", "brief", "soon", "<", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
+		String[] args = new String[]{"1ton#", "brief", "soon", "<", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt", "C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.txt"};
 		
 		Phonetics po = new Phonetics();
 		try {
@@ -85,6 +86,7 @@ public class PhoneticsTests {
 	@Ignore
 	public void inputFileNotFoundTest(){
 		
+		// In Java 11, we could use try-with-resources, but keeping the original structure
 		BufferedReader br = null;
 		try {			
 			br = new BufferedReader(new FileReader("C:\\Users\\marcosrachid\\workspace\\SearchPhonetics\\src\\main\\resource\\word_dict.tx"));
@@ -97,6 +99,7 @@ public class PhoneticsTests {
 				try {
 					br.close();
 				} catch (IOException e) {
+					// Empty catch block maintained as in original
 				}
 			}
 		}

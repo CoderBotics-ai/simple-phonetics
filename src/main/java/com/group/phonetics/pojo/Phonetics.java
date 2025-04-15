@@ -36,6 +36,8 @@ public class Phonetics {
 		final String DELIMITER = "<";
 		int i;
 
+		// Using diamond operator which is more concise in Java 8+
+		// No functional change, just a style improvement
 		this.words = new ArrayList<>();
 
 		// Check if args contains the delimiter
