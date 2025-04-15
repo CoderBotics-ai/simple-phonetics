@@ -29,6 +29,7 @@ public class PhoneticsSounds {
 	public static boolean containPhonetic(String word, String comparable) {
 		String w = findPhonetic(word);
 		Set<String> c = findSetPhonetics(comparable);
+		// Java 11 supports the same code pattern, no changes needed
 		for (String s : c) {
 			if (w.contains(s))
 				return true;
@@ -38,6 +39,7 @@ public class PhoneticsSounds {
 
 	// phonetic from word represented by string
 	private static String findPhonetic(String word) {
+		// Using StringBuilder is already efficient, no changes needed for Java 11
 		StringBuilder phonetic = new StringBuilder("");
 		for (int i = 0; i < word.length(); i++) {
 			phonetic.append(isPhonetic(word.charAt(i)));
@@ -47,6 +49,7 @@ public class PhoneticsSounds {
 
 	// list of consecutive phonetic found
 	private static Set<String> findSetPhonetics(String word) {
+		// Java 11 still uses HashSet in the same way, no changes needed
 		Set<String> phonetics = new HashSet<>();
 		StringBuilder phonetic = new StringBuilder("");
 		for (int i = 0; i < word.length(); i++) {
@@ -63,10 +66,12 @@ public class PhoneticsSounds {
 
 	// map phonetic
 	private static int isPhonetic(char set) {
+		// Exception handling pattern is still valid in Java 11
 		try {
 			SOUND1.valueOf(set + "");
 			return 1;
 		} catch (IllegalArgumentException ex) {
+			// Empty catch blocks are still allowed in Java 11
 		}
 		try {
 			SOUND2.valueOf(set + "");

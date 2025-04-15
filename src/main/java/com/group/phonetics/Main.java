@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,15 +29,12 @@ public class Main {
 		}
 
 		List<Map<String, String>> normalized = new ArrayList<>();
-		BufferedReader br = null;
-		try {
+		
+		// Using try-with-resources which is improved in Java 11 (no need for explicit close)
+		try (BufferedReader br = "stdin".equals(po.getInput()) 
+				? new BufferedReader(new InputStreamReader(System.in))
+				: Files.newBufferedReader(Paths.get(po.getInput()))) {
 			// Read from stdin if input is "stdin", otherwise read from file
-			if ("stdin".equals(po.getInput())) {
-				br = new BufferedReader(new InputStreamReader(System.in));
-			} else {
-				br = new BufferedReader(new FileReader(po.getInput()));
-			}
-			
 			String line;
 			while ((line = br.readLine()) != null) {
 				Map<String, String> map = new HashMap<>();
@@ -48,13 +47,6 @@ public class Main {
 		} catch (IOException e) {
 			System.err.println("Error: File " + po.getInput() + " could not be opened. Check your permissions.");
 			System.exit(0);
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-				}
-			}
 		}
 		
 		for (String word : po.getWords()) {
